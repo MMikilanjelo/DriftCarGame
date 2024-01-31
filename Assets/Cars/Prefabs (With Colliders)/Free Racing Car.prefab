@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carMovmentParameters: {fileID: 11400000, guid: d7d08c1c24f24b24a8db2c2e05094a2c, type: 2}
-  _playerScoreSources: {fileID: 0}
+  _playerScoreSources: {fileID: 11400000, guid: 01d7fe01b823b13408166b699fc67be5, type: 2}
   _wheels:
   - _wheelEffectObject: {fileID: 3228645933778791004}
     _wheelModel: {fileID: 6708706858096201184}

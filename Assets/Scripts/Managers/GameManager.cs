@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviour
     }
     private void FinishGame(float _totalGameTime)
     {
-        
-
-        //Load a scene with information about currency etc and oportunity for doule it by watching video
-        //SceneManager.LoadScene("MainMenu");
+        SaveManager._saveMangerInstance?.Save();
+        SceneManager.LoadScene("MainMenu");
+    }
+    private void OnDestroy()
+    {
+        EventManager<EventTypes.GameEvents , float>.UnregisterEvent(EventTypes.GameEvents.EndOfPlayingTime , FinishGame);
     }
 }

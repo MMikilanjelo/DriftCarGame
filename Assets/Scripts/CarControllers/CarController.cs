@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour
     }
     private float _moveInput;
     private float _steerInput;
+    private bool _isBraking;
     private Rigidbody _carRigidBody;
     public List<Wheel> _wheels;
     public Vector3 _centerOfMass;
@@ -45,20 +46,21 @@ public class CarController : MonoBehaviour
         Brake();
     }
 
-    void GetInputs()
+    private void GetInputs()
     {
         _moveInput = Input.GetAxis("Vertical");
         _steerInput = Input.GetAxis("Horizontal");
+        _isBraking = Input.GetKey(KeyCode.Space);
     }
     
-    void Move()
+    private void Move()
     {
         foreach(var _wheel in _wheels)
         {
            _wheel._wheelCollider.motorTorque = _moveInput * _carMovmentParameters._carSpeed * _carMovmentParameters._maxAcceleration * Time.deltaTime;
         }
     }
-    void Steer()
+    private void Steer()
     {
         foreach(var _wheel in _wheels)
         {
@@ -70,7 +72,7 @@ public class CarController : MonoBehaviour
             }
         }
     }
-    void AnimateWheels()
+    private void AnimateWheels()
     {
         foreach(var _wheel in _wheels)
         {
@@ -81,13 +83,13 @@ public class CarController : MonoBehaviour
             _wheel._wheelModel.transform.rotation = _rotation;
         }
     }
-    void Brake()
+    private void Brake()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(_isBraking)
         {
             foreach(var _wheel in _wheels)
             {
-                _wheel._wheelCollider.brakeTorque = 300 * _carMovmentParameters._brakeAcceleration * Time.deltaTime;
+                _wheel._wheelCollider.brakeTorque = _carMovmentParameters._brakeAcceleration * Time.deltaTime;
             }
         }
         else
@@ -98,11 +100,11 @@ public class CarController : MonoBehaviour
             }
         }
     }
-    void WheelEffects()
+    private void WheelEffects()
     {
         foreach(var _wheel in _wheels)
         {
-            if(Input.GetKey(KeyCode.Space) && Mathf.Abs(_steerInput) >= _carMovmentParameters._driftingThreshold)
+            if(_isBraking && CheckForDrifting(_wheel._wheelCollider.motorTorque))
             {
                 _wheel._wheelEffectObject.GetComponentInChildren<TrailRenderer>().emitting = true;
                 TriggerDriftingEvent();
@@ -111,6 +113,18 @@ public class CarController : MonoBehaviour
             {
                _wheel._wheelEffectObject.GetComponentInChildren<TrailRenderer>().emitting = false; 
             }
+        }
+    }
+    
+    private bool CheckForDrifting(float _motorTorque)
+    {
+        if (Mathf.Abs(_steerInput) >= _carMovmentParameters._driftingThreshold && _motorTorque >= 30)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     private void TriggerDriftingEvent()

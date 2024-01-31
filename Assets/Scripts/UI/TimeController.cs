@@ -8,7 +8,7 @@ public class TimeController : MonoBehaviour
 {
   
     [SerializeField] Text _timeText;
-    [SerializeField]  float _remainingTime = 10f;
+    float _remainingTime = 120f;
     void Update()
     {
         HandleRemainingTime();

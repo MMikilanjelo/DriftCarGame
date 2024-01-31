@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private const string _mainGameSceneName ="GameCortScene";
+    [SerializeField] Object _lvlSelectionMenu;
     public void StartGame()
     {
-        SceneManager.LoadScene(_mainGameSceneName);
+        SceneManager.LoadScene(_lvlSelectionMenu.name);
     }
 }
