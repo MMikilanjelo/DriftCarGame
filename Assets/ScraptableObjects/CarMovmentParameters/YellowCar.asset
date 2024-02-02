@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126c952c475d7574782eb2e027821f07, type: 3}
   m_Name: YellowCar
   m_EditorClassIdentifier: 
-  _turnSensivity: 1
-  _maxSteerAngle: 30
+  _maxSleepAngle: 120
   _maxAcceleration: 100
-  _brakeAcceleration: 150000
-  _damping: 1
-  _carSpeed: 1200
-  _driftingThreshold: 0.4
+  _brakePower: 50000
+  _motorPower: 800

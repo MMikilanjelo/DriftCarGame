@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe257cce7c97db43b4ba23c5dee349e, type: 3}
   m_Name: Bugati(Blue)
   m_EditorClassIdentifier: 
-  _carName: 
-  _carDescription: 
-  _carModel: {fileID: 0}
+  _carName: Bugati Veyron
+  _carDescription: Faster and Event More Coller
+  _carPrice: 150
+  _carModel: 1
+  _carGameObject: {fileID: 4591691155392393144, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
+  _carStats: {fileID: 11400000, guid: 5dd6d907624cb664899f36a5c239fd9b, type: 2}
+  _carPrefab: {fileID: 7720726507797323357, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class CurrencyController : MonoBehaviour
 {
-    private int _currentCurrency => SaveManager._saveMangerInstance._currency;
+    //private int _currentCurrency => SaveManager._saveMangerInstance._currency;
     [SerializeField] Text _currencyText;
     void Start()
     {
-        _currencyText.text = _currentCurrency.ToString();
+        //_currencyText.text = _currentCurrency.ToString();
     } 
 }

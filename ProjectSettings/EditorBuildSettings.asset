@@ -9,12 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6a237d14e45665b4ca1d3c6048e3d85e
   - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 3fb3f9857ba424446afcccd34a830308
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 7ef807411ddcff74f940376500a6c0f0
+  - enabled: 1
     path: Assets/Scenes/LvlMenu.unity
     guid: 780303ac578fc8541a26ae8b2850a705
   - enabled: 1
     path: Assets/Scenes/SimpleLevel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/ObstackleLevel.unity
-    guid: 640d3af5242738b4fb52de2effbb51d5
+    path: Assets/Scenes/CarShopMenu.unity
+    guid: d820e5dcce4548340a6167420bda1165
+  - enabled: 1
+    path: Assets/Scenes/SimpleOnlineRoom.unity
+    guid: 0847d3b8b5dab1742b7ac326ed390534
   m_configObjects: {}

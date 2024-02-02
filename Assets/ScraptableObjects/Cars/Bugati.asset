@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe257cce7c97db43b4ba23c5dee349e, type: 3}
   m_Name: Bugati
   m_EditorClassIdentifier: 
-  _carName: 
-  _carDescription: 
-  _carModel: {fileID: 0}
+  _carName: Bugati
+  _carDescription: Fast and Cool
+  _carPrice: 400
+  _carModel: 0
+  _carGameObject: {fileID: 1248598967819147742, guid: c4cad50aa03bbca42938fe318344950b, type: 3}
+  _carStats: {fileID: 11400000, guid: d7d08c1c24f24b24a8db2c2e05094a2c, type: 2}
+  _carPrefab: {fileID: 3311311803080157842, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}

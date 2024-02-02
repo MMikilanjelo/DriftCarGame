@@ -8,12 +8,16 @@ public static class EventTypes
     public enum GameEvents
     {
         BeginDrifting,
-        EndOfPlayingTime
+        EndOfPlayingTime,
+        LevelStarted,
         
     }
-    public enum DataEvents
+    public enum CarShopEvents
     {
-        PlayerDataLoaded
+        CarSelected,
+        CarUnlocked,
+        CarInShopChanged,
+        
     }
 }
 

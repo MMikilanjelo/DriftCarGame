@@ -1,39 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoCashe
 {
-    public float _moveSmoothness;
-    public float _rotationSmoothness;
-
-    public Vector3 _moveOffset;
-    public Vector3 _rotationOffset;
-
-    public Transform _targetToFollow;
-
-    void FixedUpdate()
-    {
-        FollowTarget();
-    }
-    void FollowTarget()
-    {
-        HandleMovment();
-        HandleRotation();
-    }
-    void HandleMovment()
-    {
-        Vector3 _targetPosition = new Vector3();
-        _targetPosition = _targetToFollow.TransformPoint(_moveOffset);
-        transform.position = Vector3.Lerp(transform.position , _targetPosition , _moveSmoothness * Time.deltaTime);
-    }
-    void HandleRotation()
-    {
-        var _direction = _targetToFollow.position - transform.position;
-        
-        var _rotation = Quaternion.LookRotation(_direction + _rotationOffset , Vector3.up);
-
-        transform.rotation = Quaternion.Lerp(transform.rotation  , _rotation , _rotationSmoothness * Time.deltaTime);
-    }
+    CinemachineVirtualCamera _cinemachineVirtualCamera;
+   private void Awake()
+   {
+        _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        EventManager<EventTypes.GameEvents , SpawnData >.RegisterEvent(EventTypes.GameEvents.LevelStarted  , OnLvlStarted);
+   }
+   private void OnLvlStarted(SpawnData _spawnData)
+   {
+        if(_cinemachineVirtualCamera == null) return;
+        _cinemachineVirtualCamera.Follow = _spawnData._cameraFollowPointTransform;
+        _cinemachineVirtualCamera.LookAt = _spawnData._playerTransform;
+   }
+   private void OnDestroy()
+   {
+         EventManager<EventTypes.GameEvents , SpawnData >.UnregisterEvent(EventTypes.GameEvents.LevelStarted  , OnLvlStarted);
+   }
 }
+

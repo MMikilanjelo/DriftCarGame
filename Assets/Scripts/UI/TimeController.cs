@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeController : MonoBehaviour
+public class TimeController : MonoCashe
 {
   
     [SerializeField] Text _timeText;
-    float _remainingTime = 120f;
-    void Update()
+    [SerializeField] float _remainingTime;
+    public override void OnTick()
     {
         HandleRemainingTime();
     }
